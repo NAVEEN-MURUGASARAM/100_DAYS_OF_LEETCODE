@@ -1,0 +1,1 @@
+This repository is dedicated to my 100 Days of Code Challenge journey. I've committed to coding for at least an hour every day for the next 100 days to enhance my coding skills, tackle coding problems, and work on personal projects
