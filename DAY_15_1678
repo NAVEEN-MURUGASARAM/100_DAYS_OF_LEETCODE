@@ -1,0 +1,19 @@
+char * interpret(char * command){
+    int n=strlen(command);
+    int pos=0;
+    for(int i=0;i<n;i++)
+{
+    if(command[i] == '(' && command[i+1] ==')')
+    {
+            command[pos++]='o';
+            i++;
+    }
+    else if(command[i]!='(' && command[i]!=')')
+    {
+        command[pos++]=command[i];
+    }
+}
+
+command[pos]='\0';
+return command;
+}
