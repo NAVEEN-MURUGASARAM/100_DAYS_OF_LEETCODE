@@ -1,0 +1,24 @@
+int maxProductDifference(int* nums, int numsSize){
+    int fmax=0,fmin=10000;
+    int smax=0,smin=10000;
+    int i1,i2;
+    for(int i=0;i<numsSize;i++)
+    {
+        if(nums[i]>fmax) {
+        fmax=nums[i];
+        i1=i;            }
+        if(nums[i]<fmin) {
+        fmin=nums[i];       
+        i2=i;            }
+    }
+    for(int i=0;i<numsSize;i++)
+    {
+        if(nums[i]>smax && i!=i1)
+        smax=nums[i];
+        if(nums[i]<smin && i!=i2)
+        smin=nums[i]; 
+    }
+    if(fmin==fmax)
+    return 0;
+    return (fmax*smax)-(fmin*smin);
+}
