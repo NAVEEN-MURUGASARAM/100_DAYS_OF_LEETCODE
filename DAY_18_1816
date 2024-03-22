@@ -1,0 +1,22 @@
+char* truncateSentence(char* s, int k) {
+    int count=0,len=0;
+    for(int i=0;s[i]!='\0';i++)
+{
+        len++;
+        if(s[i] == ' ')
+        {
+        count++;
+        if(count==k)
+    {
+            s[i]='\0';
+        }
+    }
+}
+    char * sentence=(char *) malloc (sizeof(char)*len+1);
+    for(int i=0;i<len;i++)
+    {
+        sentence[i]=s[i];
+    }
+    sentence[len]='\0';
+return sentence;    
+}
