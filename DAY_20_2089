@@ -1,0 +1,35 @@
+int* targetIndices(int* nums, int numsSize, int target, int* returnSize) {
+    int listSize=0;
+    for(int i=0;i<numsSize;i++)
+    {
+        for(int j=i+1;j<numsSize;j++)
+        {
+            if(nums[j]<nums[i])
+            {
+                int temp=nums[j];
+                nums[j]=nums[i];
+                nums[i]=temp;
+            }
+        }
+    }
+    for(int i=0;i<numsSize;i++)
+    {
+        if(nums[i]==target)
+        {
+        listSize++;
+        }
+    }
+    int * list=(int *) malloc(sizeof(int) * listSize);
+    int j=0;
+    for(int i=0;i<numsSize;i++)
+    {
+        if(nums[i]==target)
+        {
+        list[j]=i;
+        j++;
+        }
+    }
+    *returnSize=listSize;
+    return list;
+}
+    
