@@ -1,0 +1,32 @@
+int minimumOperations(int* nums, int numsSize) {
+    int min=0;
+    for(int i=1;i<numsSize;i++)
+    {
+        for(int j=0;j<numsSize;j++)
+        {
+            if(nums[j] >nums[i])
+            {
+                int temp=nums[i];
+                nums[i]=nums[j];
+                nums[j]=temp;
+            }
+        }
+    }
+    for(int k=0;k<numsSize;k++)
+    {
+        if(nums[k] == 0)
+        {
+            continue;
+        }
+        else
+        {
+            min++;
+            int x=nums[k];
+            for(int l=k;l<numsSize;l++)
+            {
+                nums[l]-=x;
+            }
+        }
+    }  
+  return min;   
+}
