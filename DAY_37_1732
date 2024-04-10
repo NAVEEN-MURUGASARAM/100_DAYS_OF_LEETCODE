@@ -1,0 +1,17 @@
+int largestAltitude(int* gain, int gainSize) {
+    int max=0;
+    int * altitude=(int *) malloc(sizeof(int) *(gainSize+1));
+    altitude[0]=0;
+    altitude[1]=altitude[0]+gain[0];
+    for(int i=1;i<gainSize;i++)
+    {
+        altitude[i+1]=altitude[i]+gain[i];
+    }
+    for(int j=0;j<gainSize+1;j++)
+    {
+        if(altitude[j]>max)
+        max=altitude[j];
+    }
+    free(altitude);
+    return max;
+}
