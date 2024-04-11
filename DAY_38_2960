@@ -1,0 +1,15 @@
+int countTestedDevices(int* batteryPercentages, int batteryPercentagesSize) {
+    int devices=0;
+    for(int i=0;i<batteryPercentagesSize;i++)
+    {
+        if(batteryPercentages[i]>0)
+        {
+            devices++;
+            for(int j=i+1;j<batteryPercentagesSize;j++)
+            {
+                batteryPercentages[j]-=1;
+            }
+        }
+    }
+    return devices;
+}
