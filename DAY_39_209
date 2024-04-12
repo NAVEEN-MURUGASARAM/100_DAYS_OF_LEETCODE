@@ -1,0 +1,15 @@
+int minSubArrayLen(int target, int* nums, int numsSize) {
+    int sum=0,window=INT_MAX;
+    int start=0,end;
+    for(int end=0;end<numsSize;end++)
+    {
+        sum+=nums[end];
+        while(sum>=target)
+        {
+            window=window<(end-start+1)?window:(end-start+1);
+            sum-=nums[start];
+            start++;
+        }
+    }
+    return window==INT_MAX?0:window;
+}
