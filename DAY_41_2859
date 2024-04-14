@@ -1,0 +1,20 @@
+int sumIndicesWithKSetBits(int* nums, int numsSize, int k){
+    int limit=numsSize;
+    int sum=0;
+    for(int i=0;i<numsSize;i++)
+    {
+        int temp=i;
+        int bi=0;
+        while(temp!=0)
+        {   
+            int rem=temp%2;
+            bi+=rem;
+            temp/=2;
+        }
+        if(bi==k)
+        {
+            sum+=nums[i];
+        }
+    }
+return sum;
+}
