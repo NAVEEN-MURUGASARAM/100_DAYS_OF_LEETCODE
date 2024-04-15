@@ -1,0 +1,28 @@
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* answerQueries(int* nums, int numsSize, int* queries, int queriesSize, int* returnSize) {
+    int *answer = (int *) malloc(sizeof(int) * queriesSize);
+    int sum=0;
+for(int i=0;i<numsSize;i++)
+{
+     sum+=nums[i];
+}
+for(int j=0;j<queriesSize;j++)
+{
+    int temp=sum;
+    for(int i=0;i<numsSize;i++)
+    {
+        int n=numsSize;
+        if(temp<=queries[j])
+        {
+            answer[j]=n;
+            break;
+        }
+        temp-=nums[i];
+        n--;
+    }
+}
+*returnSize=queriesSize;
+return nums;
+}
