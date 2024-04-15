@@ -1,28 +1,35 @@
-/**
- * Note: The returned array must be malloced, assume caller calls free().
- */
-int* answerQueries(int* nums, int numsSize, int* queries, int queriesSize, int* returnSize) {
-    int *answer = (int *) malloc(sizeof(int) * queriesSize);
-    int sum=0;
-for(int i=0;i<numsSize;i++)
-{
-     sum+=nums[i];
-}
-for(int j=0;j<queriesSize;j++)
-{
-    int temp=sum;
+int* minSubsequence(int* nums, int numsSize, int* returnSize) {
+    int sum=0,index,current=0,limit=0;
+    int * ans;
     for(int i=0;i<numsSize;i++)
     {
-        int n=numsSize;
-        if(temp<=queries[j])
+        int flag=0;
+        for(int j=i+1;j<numsSize;j++)
         {
-            answer[j]=n;
+            index=j;
+            if(nums[j]>nums[i])
+            {
+                flag=1;
+                int temp=nums[i];
+                nums[i]=nums[j];
+                nums[j]=temp;
+            }
+        }
+        if(flag=1)
+        sum+=nums[i];
+        else
+        sum+=nums[index];
+    }   
+    for(int k=0;k<numsSize;k++)
+    {
+        limit++;
+        current+=nums[k];
+        sum-=nums[k];
+        if(current > sum)
+        {
             break;
         }
-        temp-=nums[i];
-        n--;
     }
-}
-*returnSize=queriesSize;
-return nums;
+    *returnSize=limit;
+    return nums;
 }
