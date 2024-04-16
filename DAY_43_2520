@@ -1,0 +1,14 @@
+int countDigits(int num) {
+    int val=num;
+    int digits=0;
+    while(val!=0)
+    {
+        int temp=val%10;
+        if(num%temp==0)
+        {
+            digits++;
+        }
+        val/=10;
+    }
+    return digits;
+}
