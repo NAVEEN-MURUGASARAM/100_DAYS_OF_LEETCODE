@@ -1,0 +1,36 @@
+int rule(char * rulekey)
+{
+    char *item1="type";
+    char *item2="color";
+    for(int f=0;rulekey[f]!='\0';f++)
+    {
+    if(rulekey[f]!=item1[f])
+    {
+        break;
+    }
+    else
+    return 0;
+    }
+    for(int f=0;rulekey[f]!='\0';f++)
+    {
+    if(rulekey[f]!=item2[f])
+    {
+        break;
+    }
+    else
+    return 1;
+    }
+    return 2;
+}
+int countMatches(char*** items, int itemsSize, int* itemsColSize, char* ruleKey, char* ruleValue) {
+    int ans=0;
+    int m=rule(ruleKey);
+    for(int k=0;k<itemsSize;k++)
+    {
+        if(strcmp(items[k][m],ruleValue)==0)
+        {
+          ans++;
+        }
+    }
+return ans;
+}
