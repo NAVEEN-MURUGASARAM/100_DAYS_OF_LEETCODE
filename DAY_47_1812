@@ -1,0 +1,17 @@
+bool squareIsWhite(char* coordinates) {
+    char temp=coordinates[1];
+    if(coordinates[0] %2==0)
+    {
+    if(temp % 2==0)
+    return 0;
+    else
+    return 1;
+    }
+    else
+    {
+    if(temp % 2==0)
+    return 1;
+    else
+    return 0;
+}
+}  
