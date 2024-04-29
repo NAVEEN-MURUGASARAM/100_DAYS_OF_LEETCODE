@@ -1,0 +1,31 @@
+int** sortTheStudents(int** score, int scoreSize, int* scoreColSize, int k, int* returnSize, int** returnColumnSizes) {
+    int max_index;
+    for(int i=0;i<scoreSize-1;i++)
+    {
+        max_index=i;
+        for(int j=i+1;j<scoreSize;j++)
+        {
+            if(score[j][k]>score[max_index][k])
+            {
+                max_index=j;
+            }
+        }
+            int *temp=(int *) malloc(sizeof(int) * scoreColSize[i]);
+            for(int x=0;x<scoreColSize[i];x++)
+            {
+                temp[x]=score[i][x];
+            }
+            for(int x=0;x<scoreColSize[i];x++)
+            {
+                score[i][x]=score[max_index][x];
+                score[max_index][x]=temp[x];
+            }
+            free(temp);
+        }
+    *returnSize=scoreSize;
+    *returnColumnSizes = (int*)malloc(sizeof(int) * scoreSize); 
+    for (int i = 0; i < scoreSize; i++) {
+        (*returnColumnSizes)[i] = scoreColSize[i]; 
+    }
+    return score;
+}
