@@ -1,0 +1,45 @@
+void sort(int *arr,int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if(arr[j]<arr[i])
+            {
+                int t=arr[i];
+                arr[i]=arr[j];
+                arr[j]=t;
+            }
+        }
+    }
+}
+int splitNum(int num) {
+    int temp=num;
+    int n=0,i=0,sum=0;
+    int num1,num2;
+    int * arr=(int *) malloc(sizeof(int) * 1);
+    while(temp!=0)
+    {
+        int rem=temp%10;
+        arr=(int *) realloc(arr,sizeof(int) * ++n);
+        arr[i]=rem;
+        i++;
+        temp/=10;
+    }
+    sort(arr,n);
+    if(n==1)
+    return num;
+    int mul=1;
+    for(int i=n-1;i>=0;i-=2)
+    {
+        if(i==0)
+        {
+        sum+=arr[i]*mul;
+        break;
+        }
+        sum+=arr[i]*mul;
+        sum+=arr[i-1]*mul;
+        mul*=10;
+    }
+   return sum;
+}
