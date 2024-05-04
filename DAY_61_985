@@ -1,0 +1,28 @@
+int even_sum(int *nums,int size)
+{
+    int sum=0;
+    for(int i=0;i<size;i++)
+    {
+        if(nums[i]%2==0)
+        {
+            sum+=nums[i];
+        }
+    }
+    return sum;
+}
+int* sumEvenAfterQueries(int* nums, int numsSize, int** queries, int queriesSize, int* queriesColSize, int* returnSize) {
+    int ansSize=0,index=0;
+    int *ans=(int *) malloc(sizeof(int) *10);
+    for(int i=0;i<queriesSize;i++)
+    {
+        nums[queries[i][1]]+=queries[i][0];
+        int sum=even_sum(nums,numsSize);
+        if(sum%2==0)
+        {
+            ans=(int *) realloc(ans,sizeof(int) * (++ansSize));
+            ans[index++]=sum;
+        }
+    }
+    *returnSize=ansSize;
+    return ans;
+}
