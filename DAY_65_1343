@@ -1,0 +1,27 @@
+int numOfSubarrays(int* arr, int arrSize, int k, int threshold) {
+    int sub=0,ave=0;
+    int sum=0;
+    int lptr=0,rptr=k;
+    for(int i=lptr;i<k;i++)
+    {
+        sum+=arr[i];
+    }
+    ave=sum/k;
+    if(ave>=threshold)
+    {
+        sub++;
+    }
+    while(rptr<arrSize)
+    {   
+        sum-=arr[lptr];
+        lptr++;
+        sum+=arr[rptr];
+        ave=sum/k;
+        if(ave>=threshold)
+        {
+            sub++;
+        }
+        rptr++;
+    }
+    return sub;
+}
