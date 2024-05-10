@@ -1,0 +1,21 @@
+int maxScore(int* cardPoints, int cardPointsSize, int k) {
+    int max_score=0,total=0;
+    int lsum=0,rsum=0;
+    for(int i=0;i<k;i++)
+    {
+        lsum+=cardPoints[i];
+    }
+    max_score=lsum;
+    int r_index=cardPointsSize;
+    for(int i=k-1;i>=0;i--)
+    {
+        lsum-=cardPoints[i];
+        rsum+=cardPoints[--r_index];
+        total=lsum+rsum;
+        if(total > max_score)
+        {
+        max_score=total;     
+        }
+    }
+    return max_score;
+}
