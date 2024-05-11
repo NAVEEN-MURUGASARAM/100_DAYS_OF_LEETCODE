@@ -1,0 +1,53 @@
+int** mergeArrays(int** nums1, int nums1Size, int* nums1ColSize, int** nums2, int nums2Size, int* nums2ColSize, int* returnSize, int** returnColumnSizes){
+    int len=nums1Size+nums2Size;
+    int ** merged =(int **) malloc(sizeof(int *) *len);
+    *returnColumnSizes = (int *)malloc(sizeof(int) * len);
+    int length=0;
+    int i=0,j=0;
+     while(i<nums1Size && j<nums2Size)
+        {
+        merged[length] = (int *)malloc(sizeof(int) * 2);
+        if(nums1[i][0]==nums2[j][0])
+        {
+            int total=nums1[i][1]+nums2[j][1];
+            merged[length][0]=nums1[i][0];
+            merged[length][1]=total;
+            i++;
+            j++;
+        }
+        else if(nums1[i][0]<nums2[j][0])
+        {    
+            merged[length][0]=nums1[i][0];
+            merged[length][1]=nums1[i][1];
+            i++;
+        }
+        else
+        {      
+            merged[length][0]=nums2[j][0];
+            merged[length][1]=nums2[j][1];
+            j++;   
+        }
+    (*returnColumnSizes)[length]=2;
+    length++;    
+    }
+    while(i<nums1Size)
+    {
+        merged[length] = (int *)malloc(sizeof(int) * 2);
+        merged[length][0]=nums1[i][0];
+        merged[length][1]=nums1[i][1];
+        i++;
+        (*returnColumnSizes)[length]=2;
+        length++;
+        }
+    while(j<nums2Size)
+    {
+        merged[length] = (int *)malloc(sizeof(int) * 2);
+        merged[length][0]=nums2[j][0];
+        merged[length][1]=nums2[j][1];
+        j++;
+        (*returnColumnSizes)[length]=2;
+        length++;
+    }
+    *returnSize=length;
+    return merged; 
+}
