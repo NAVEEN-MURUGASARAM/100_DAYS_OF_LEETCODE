@@ -1,0 +1,38 @@
+int countAsterisks(char* s) {
+    int n=strlen(s);
+    int line=2;
+    int star=0;
+    for(int i=0;i<n;i++)
+    {
+        if(s[i]=='|')
+        {
+            break;
+        }
+        else if(s[i]=='*')
+        {
+            star++;
+        }
+    }
+    for(int i=0;i<n;i++)
+    {
+        if(line>0)
+        {
+        if(s[i]=='|')
+        {
+            line--;
+        }
+        }
+        else
+        {
+            if(s[i]=='*')
+            {
+                star++;
+            }
+            else if(s[i]=='|')
+            {
+                line=1;
+            }
+        }
+    }
+    return star;
+}
