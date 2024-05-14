@@ -1,0 +1,26 @@
+int compare(char *word,char *pref,int n)
+{
+    int flag=0;
+    for(int i=0;i<n;i++)
+    {
+        if(word[i]!=pref[i])
+        {
+            flag=1;
+            break;
+        }
+    }
+    return flag;
+}
+int prefixCount(char** words, int wordsSize, char* pref) {
+    int size=strlen(pref);
+    int ans=0;
+    for(int i=0;i<wordsSize;i++)
+    {
+        int res=compare(words[i],pref,size);
+        if(res==0)
+        {
+            ans++;
+        }
+    }
+    return ans;
+}
