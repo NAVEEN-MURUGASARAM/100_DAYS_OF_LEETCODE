@@ -1,0 +1,24 @@
+int is_even(int n)
+{
+    int sum=0;
+    while(n!=0)
+    {
+        int rem=n%10;
+        n/=10;
+        sum+=rem;
+    }
+    return sum%2==0?1:0;
+}
+int countEven(int num) {
+    int count=0;
+
+    for(int i=1;i<=num;i++)
+    {
+        int res=is_even(i);
+        if(res==1)
+        {
+            count++;
+        }
+    }
+    return count;
+}
