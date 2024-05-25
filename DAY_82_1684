@@ -1,0 +1,28 @@
+int countConsistentStrings(char * allowed, char ** words, int wordsSize){
+    int consistent=0,n=strlen(allowed);
+    int * hash=(int *) malloc(sizeof(int) * 27);
+    for(int i=0;i<n;i++)
+    {
+        hash[allowed[i]%'a']=1;
+    }
+    for(int i=0;i<wordsSize;i++)
+    {
+        bool flag=1;
+        int j=0,size=0,len=strlen(words[i]);;
+        while(flag!=0 && size!=len)
+        {
+            size++;
+            if(hash[words[i][j++] % 'a']!=1)
+            {
+                flag=0;
+                break;
+            }
+        }
+        if(flag!=0)
+        {
+            printf("%d",i);
+            consistent++;
+        }
+    }
+    return consistent;
+}
